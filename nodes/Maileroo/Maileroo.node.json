@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-maileroo",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Communication", "Marketing"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://maileroo.com/docs/api-reference/emails/introduction"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://maileroo.com/docs/api-reference/emails/introduction"
+			}
+		]
+	}
+}

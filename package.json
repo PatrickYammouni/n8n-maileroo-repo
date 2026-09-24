@@ -23,7 +23,7 @@
 	"scripts": {
 		"build": "n8n-node build",
 		"build:watch": "tsc --watch",
-		"predev": "node -e \"const major=+process.versions.node.split('.')[0]; if(major<24||major>=25){console.error('Current n8n needs Node 24. You are on '+process.version+'.\\nRun: export PATH=/opt/homebrew/opt/node@24/bin:$PATH'); process.exit(1)}\"",
+		"predev": "node -e \"const major=+process.versions.node.split('.')[0]; if(major!==24){console.error('Current n8n needs Node 24. You are on '+process.version+'.\\nRun: export PATH=/opt/homebrew/opt/node@24/bin:$PATH'); process.exit(1)}\"",
 		"dev": "N8N_EXPRESSION_ENGINE=legacy n8n-node dev",
 		"lint": "n8n-node lint",
 		"lint:fix": "n8n-node lint --fix",

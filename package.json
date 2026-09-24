@@ -6,7 +6,10 @@
 	"homepage": "https://maileroo.com",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/PatrickYammouni/n8n-maileroo-repo.git"
+		"url": "git+https://github.com/PatrickYammouni/n8n-maileroo-repo.git"
+	},
+	"publishConfig": {
+		"access": "public"
 	},
 	"bugs": {
 		"url": "https://github.com/PatrickYammouni/n8n-maileroo-repo/issues"

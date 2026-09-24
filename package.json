@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-maileroo",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"description": "n8n community node for the Maileroo Email API",
 	"license": "MIT",
 	"homepage": "https://maileroo.com",

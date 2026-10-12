@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-maileroo",
+	"node": "n8n-nodes-maileroo.maileroo",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Communication", "Marketing & Content"],

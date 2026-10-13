@@ -84,18 +84,9 @@ export function fromFields(operations: EmailOperation[]): INodeProperties[] {
 				send: {
 					type: 'body',
 					property: 'from',
-					value: '={{ Object.assign({ address: $value }, $parameter.fromName ? { display_name: $parameter.fromName } : {}) }}',
+					value:
+						'={{ Object.assign({ address: $value }, $parameter.additionalFields.fromName ? { display_name: $parameter.additionalFields.fromName } : {}) }}',
 				},
-			},
-		},
-		{
-			displayName: 'From Name',
-			name: 'fromName',
-			type: 'string',
-			default: '',
-			description: 'Optional sender display name',
-			displayOptions: {
-				show: showFor(operations),
 			},
 		},
 	];
@@ -105,7 +96,7 @@ export const toField = (operations: EmailOperation[]) =>
 	recipientsField('To', 'to', operations, true);
 
 export function additionalEmailFields(operations: EmailOperation[]): INodeProperties {
-	const includeSchedule = operations.some((operation) => operation !== 'sendBulk');
+	const isSingleSend = operations.some((operation) => operation !== 'sendBulk');
 
 	const options: INodeProperties[] = [
 		{
@@ -346,7 +337,14 @@ export function additionalEmailFields(operations: EmailOperation[]): INodeProper
 		},
 	];
 
-	if (includeSchedule) {
+	if (isSingleSend) {
+		options.push({
+			displayName: 'From Name',
+			name: 'fromName',
+			type: 'string',
+			default: '',
+			description: 'Sender display name shown to recipients',
+		});
 		options.push({
 			displayName: 'Scheduled At',
 			name: 'scheduledAt',

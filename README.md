@@ -36,7 +36,7 @@ All operations use the Email API at `https://smtp.maileroo.com/api/v2`.
 - **Send** — send a basic HTML and/or plain text email
 - **Send Template** — send an email from a Maileroo template
 - **Send Bulk** — send up to 500 personalized emails
-- **Get Scheduled** — list emails queued for later delivery
+- **Get Scheduled** — list emails queued for later delivery (Return All, or up to a Limit)
 - **Delete Scheduled** — cancel a scheduled email by reference ID
 
 ## Credentials
@@ -64,7 +64,7 @@ Built with the official n8n-node tool as a declarative HTTP API node. Compatible
 3. Add at least one **To** recipient.
 4. Enter a subject and HTML or plain text body.
 
-Optional fields cover CC, BCC, reply-to, tracking, tags, headers, attachments, scheduling, and a custom reference ID.
+Optional fields cover sender name, CC, BCC, reply-to, tracking, tags, headers, attachments, scheduling, and a custom reference ID.
 
 To attach a file from a previous node, set **Content** to `{{ $binary.data.data }}` and **File Name** to `{{ $binary.data.fileName }}`.
 

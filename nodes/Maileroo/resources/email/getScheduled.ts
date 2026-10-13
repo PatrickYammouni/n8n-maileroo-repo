@@ -25,6 +25,36 @@ export const emailGetScheduledDescription: INodeProperties[] = [
 		},
 	},
 	{
+		displayName: 'Return All',
+		name: 'returnAll',
+		type: 'boolean',
+		default: false,
+		description: 'Whether to return all results or only up to a given limit',
+		displayOptions: {
+			show: showOnlyForGetScheduled,
+		},
+		routing: {
+			send: {
+				paginate: '={{ $value }}',
+			},
+			operations: {
+				pagination: {
+					type: 'generic',
+					properties: {
+						continue: '={{ $response.body.data.page < $response.body.data.total_pages }}',
+						request: {
+							qs: {
+								domain: '={{ $parameter.domain || undefined }}',
+								page: '={{ $response.body ? $response.body.data.page + 1 : 1 }}',
+								per_page: 100,
+							},
+						},
+					},
+				},
+			},
+		},
+	},
+	{
 		displayName: 'Limit',
 		name: 'limit',
 		type: 'number',
@@ -35,31 +65,15 @@ export const emailGetScheduledDescription: INodeProperties[] = [
 		default: 50,
 		description: 'Max number of results to return',
 		displayOptions: {
-			show: showOnlyForGetScheduled,
+			show: {
+				...showOnlyForGetScheduled,
+				returnAll: [false],
+			},
 		},
 		routing: {
 			send: {
 				type: 'query',
 				property: 'per_page',
-			},
-		},
-	},
-	{
-		displayName: 'Page',
-		name: 'page',
-		type: 'number',
-		typeOptions: {
-			minValue: 1,
-		},
-		default: 1,
-		description: 'Page of results to return',
-		displayOptions: {
-			show: showOnlyForGetScheduled,
-		},
-		routing: {
-			send: {
-				type: 'query',
-				property: 'page',
 			},
 		},
 	},
